@@ -119,6 +119,8 @@ def authorized():
 
         _save_cache(cache)
 
+        app.logger.info(datetime.utcnow().strftime("%H:%M:%S") + ": " + user.username + ' logged in successfully')
+        
     return redirect(url_for('home'))
 
 @app.route('/logout')
