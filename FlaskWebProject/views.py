@@ -100,7 +100,7 @@ def authorized():
         return render_template("auth_error.html", result=request.args)
     
     if request.args.get('code'):
-        cache = None
+        cache = _load_cache()
         # TODO: Acquire a token from a built msal app, along with the appropriate redirect URI
         result = _build_msal_app(cache=cache).acquire_token_by_authorization_code(
             request.args['code'],
@@ -116,7 +116,8 @@ def authorized():
 
         user = User.query.filter_by(username="admin").first()
         login_user(user)
-        # _save_cache(cache)
+
+        _save_cache(cache)
 
     return redirect(url_for('home'))
 
@@ -151,8 +152,8 @@ def _load_cache():
 
 def _save_cache(cache):
     # TODO: Save the cache, if it has changed
-    session["token_cache"] = cache
-    pass
+    if cache.has_state_changed:
+        session["token_cache"] = cache.serialize()
 
 def _build_msal_app(cache=None, authority=None):
     return msal.ConfidentialClientApplication(
