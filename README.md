@@ -1,6 +1,9 @@
 # GET_PASSES_THIS_REPO_UDACITY_PLEASE
 Azure Udacity Learning, Project 1
 
+1. Submission_Images Folder: Contains images to prove student completed various tasks throughout the project.
+2. The application's live URL: https://azureudacityproject1.azurewebsites.net/
+
 # Article CMS (FlaskWebProject)
 
 This project is a Python web application built using Flask. The user can log in and out and create/edit articles. An article consists of a title, author, and body of text stored in an Azure SQL Server along with an image that is stored in Azure Blob Storage. You will also implement OAuth2 with Sign in with Microsoft using the `msal` library, along with app logging.
