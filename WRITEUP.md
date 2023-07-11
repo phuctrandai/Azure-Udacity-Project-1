@@ -13,15 +13,18 @@
 
 #### Analyze:
 1. Costs:
-    * Azure Virtual Machine (VM) is more expensive than Azure App Service.
-    * VM requires more steps to configure and deploy the application, while App Service allows us to quickly deploy with built-in CI/CD tools without worrying about the underlying infrastructure.
+    * Azure Virtual Machine (VM) is more expensive than Azure App Service.
+    * VM come with many pricing options: Pay as you go, Azure savings plan for compute, Reserved instances, and Spot. Meanwhile, Azure App Service comes with Pay as you go, Azure savings plan for compute, and Reservations.
+    * VM has two tiers, Basic and Standard; pricing is based on the size and configuration, such as CPU, memory, and disk storage. Azure App Service has tiers ranging from Basic to Premium, and the pricing is based on that range, with each tier offering different levels of performance and pricing.
+    * For example, with tier Basic, the OS Ubuntu, 1 CPU core, 1.75 GB of RAM, and 40 GB of storage, the VM cost is about 23$ per month, but the Azure App Service cost is about 13$ per month.
 
 2. Scalability:
     * VM can have higher scalability by grouping multiple instances into a scale set. We can configure it automatically to increase or decrease the number of instances, or manually add or remove instances as needed.
     * App Service has good built-in autoscaling capabilities with vertical and horizontal scaling based on demand.
+    * VM has a scale limit: The platform image is 1000 nodes per scale set, and the custom image is 600 nodes per scale set. And Azure App Service has a scale limit of 30 instances, compared to 100 with the App Service Environment.
   
 3. Availability:
-    * VM can offer high availability by grouping multiple instances into a scale set or configuring them in an availability set.
+    * VM can offer high availability by grouping multiple instances into a scale set or configuring them in an availability set. This helps ensure that the application remains available even if one or more VM instances fail.
     * App Service has built-in high-availability features such as autoscaling, load balancing, and geo-replication. App Service also has deployment slots for testing, staging, and production; they can be swapped to reduce downtime during deployment.
 
 #### Choose the solution:
